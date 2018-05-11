@@ -1,4 +1,5 @@
 import random
+from logging import getLogger, DEBUG
 
 
 class MarcovChainGenerator:
@@ -41,7 +42,7 @@ class MarcovChainGenerator:
         if self.actualState in self.transitions.keys():
             s = sum(self.transitions[self.actualState].values(), 0)
             rand = random.randrange (0, s)
-            print("For state", self.actualState, "we have sum of", s)
+            # print("For state", self.actualState, "we have sum of", s)
             for state in self.transitions[self.actualState]:
                 val = self.transitions[self.actualState][state]
                 if rand - val < 0:
@@ -52,14 +53,14 @@ class MarcovChainGenerator:
         self.actualState = self.startState
         return self.actualState
 
-generator = MarcovChainGenerator()
-for l in "to jest przykladowy test zobaczymy co tu sie dziejeee kekeke":
-    generator.addNext(l)
-
-print(generator.transitions)
-generator.setState('a')
-st = ""
-for i in range(20):
-    st += generator.getNextState()
-
-print(st)
+# generator = MarcovChainGenerator()
+# for l in "to jest przykladowy test zobaczymy co tu sie dziejeee kekeke":
+#     generator.addNext(l)
+#
+# print(generator.transitions)
+# generator.setState('a')
+# st = ""
+# for i in range(20):
+#     st += generator.getNextState()
+#
+# print(st)
